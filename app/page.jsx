@@ -99,6 +99,12 @@ export default function Home() {
             Login
           </button>
         </div>
+        <div>
+          <h1>
+              ¿No tienes usuario? 
+              <Link href="/Register">Regístrate aquí</Link>
+          </h1>
+          </div>
       </form>
     </div>
   );

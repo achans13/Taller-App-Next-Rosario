@@ -86,6 +86,52 @@ const postReview = async (id, rating, comment) => {
     console.log(data);
 }
 
+const getDishes = async (q="",category="",dateFrom="",dateTo="",city="",LocalId="") => {
+
+    const response = await fetch(`${URL}api/dishes?q=${q}&category=${category}&dateFrom=${dateFrom}&dateTo=${dateTo}&city=${city}&localId=${LocalId}`);
+
+    const data = await response.json();
+
+    console.log(data);
+
+    return data;
+}
+const postDish = async (name, category, localId, city, price, description) => {
+    const response = await fetch(`${URL}api/dishes`,{
+        method: "POST",
+        headers:{"Content-Type" : "application/json", 'Authorization' : `Bearer ${localStorage.getItem("token")}`}
+        ,
+        body: JSON.stringify({name, category, localId, city, price, description})
+    })
+
+    const data = await response.json();
+
+    console.log(data);
+}
+const getDish = async (id) => {
+    console.log(id,"id de getDish");
+    const response = await fetch(`${URL}api/dishes/${id}`);
+
+    console.log(response);
+
+    const data = await response.json();
+
+    console.log(data);
+
+    return data;
+}
+
+const postReviewD = async (id, rating, comment) => {
+    const response = await fetch (`${URL}api/dishes/${id}/reviews`,{
+        method: "POST",
+        headers:{"Content-Type" : "application/json", 'Authorization' : `Bearer ${localStorage.getItem("token")}`}
+        ,
+        body: JSON.stringify({rating, comment})
+    })
+    const data = await response.json();
+
+    console.log(data);
+}
 
 
 export {
@@ -95,6 +141,9 @@ export {
     postLocal,
     getLocal,
     getUser,
-    postReview
-
+    postReview,
+    getDishes,
+    postDish,
+    getDish,
+    postReviewD
 }

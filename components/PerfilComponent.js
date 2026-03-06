@@ -8,6 +8,7 @@ export default function PerfilComponent () {
     const params = useParams();
     const [user, setUser] = useState({});
     const [locals, setLocals] = useState([]);
+    const [dishes, setDishes] = useState([]);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -15,6 +16,17 @@ export default function PerfilComponent () {
             console.log(data);
             setUser(data.item);
             setLocals(data.item.locals)
+        }
+
+        fetchUser();
+    }, [])
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const data = await getUser(params.id);
+            console.log(data);
+            setUser(data.item);
+            setDishes(data.item.dishes)
         }
 
         fetchUser();
@@ -64,8 +76,32 @@ export default function PerfilComponent () {
             </div>
           ))}
         </div>
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {dishes.map((dish) => (
+            <div key={dish.id} className="group relative">
+              <img
+                alt={dish.name}
+                src={"https://media.gettyimages.com/id/2022469376/es/vector/icono-de-plato-tenedor-y-cuchillo-con-trazo-editable.jpg?s=612x612&w=gi&k=20&c=9POvkSyh0igPo3M5GX5iz6_D0OPAPxe4zotLZWr_P-A="} //IA
+                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+              />
+              <div className="mt-4 flex justify-between">
+                <div>
+                  <h3 className="text-sm text-gray-700">
+                    <Link href={`/DetallePlato/${dish.id}`}>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {dish.name}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-500">{dish.city}</p>
+                </div>
+                <p className="text-sm font-medium text-gray-900">${dish.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
    </div>
  </div> 
+ 
     )
 }

@@ -9,8 +9,8 @@ import Link from 'next/link'
 const navigation = [
   { name: 'ListadoPrincipal', href: '/ListadoPrincipal' },
   { name: 'Alta Locales', href: '/AltaLocal' },
-  { name: 'Alta Platos', href: '#/AltaPlatos' },
-  { name: 'Company', href: '#' },
+  { name: 'Alta Platos', href: '/AltaPlato' },
+  { name: 'Listado platos', href: '/ListadoPlatos' },
 ]
 
 const Header = () => {
