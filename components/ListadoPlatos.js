@@ -51,116 +51,99 @@ const ListadoPlatosComponents = () => {
 
 
     return(
-    <div className="bg-white">
-
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-
-        <div className="grid grid-cols-1 mb-7 gap-x-8 gap-y-6 sm:grid-cols-2">
+    <div className="bg-gray-100 min-h-screen">
+      <div className="mx-auto max-w-7xl px-6 py-12">
+        <h1 className="text-3xl font-bold mb-10 text-gray-800">
+            Explorar platos
+        </h1>
+        <div className="grid grid-cols-1 mb-10 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 bg-white p-6 rounded-xl shadow">
           <div>
-            <label htmlFor="query" className="block text-sm/6 font-semibold text-gray-900">
-              Query
+            <label className="block text-sm font-semibold text-gray-700">
+              Buscar
             </label>
-            <div className="mt-2.5">
-              <input
-                id="query"
-                name="query"
-                type="text"
-                autoComplete="given-query"
-                onChange={(e) => setQuery(e.target.value)}
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
+            <input
+              type="text"
+              onChange={(e) => setQuery(e.target.value)}
+              className="mt-2 w-full rounded-md border px-3 py-2"
+              placeholder="Buscar plato..."
+            />
           </div>
           <div>
-            <label htmlFor="dateFrom" className="block text-sm/6 font-semibold text-gray-900">
-              Date From
+            <label className="block text-sm font-semibold text-gray-700">
+              Fecha desde
             </label>
-            <div className="mt-2.5">
-              <input
-                id="dateFrom"
-                name="dateFrom"
-                type="date"
-                onChange={(e) => setDateFrom(e.target.value)}
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
+            <input
+              type="date"
+              onChange={(e) => setDateFrom(e.target.value)}
+              className="mt-2 w-full rounded-md border px-3 py-2"
+            />
           </div>
           <div>
-            <label htmlFor="dateTo" className="block text-sm/6 font-semibold text-gray-900">
-              Date to
+            <label className="block text-sm font-semibold text-gray-700">
+              Fecha hasta
             </label>
-            <div className="mt-2.5">
-              <input
-                id="dateTo"
-                name="dateTo"
-                type="date"
-                autoComplete="given-zone"
-                onChange={(e) => setDateTo(e.target.value)}
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
+            <input
+              type="date"
+              onChange={(e) => setDateTo(e.target.value)}
+              className="mt-2 w-full rounded-md border px-3 py-2"
+            />
           </div>
           <div>
-            <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
-              City
+            <label className="block text-sm font-semibold text-gray-700">
+              Ciudad
             </label>
-            <div className="mt-2.5">
-              <input
-                id="city"
-                name="city"
-                type="text"
-                onChange={(e) => setCity(e.target.value)}
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
+            <input
+              type="text"
+              onChange={(e) => setCity(e.target.value)}
+              className="mt-2 w-full rounded-md border px-3 py-2"
+            />
           </div>
           <div>
-            <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
+            <label className="block text-sm font-semibold text-gray-700">
               Local
             </label>
             <select
-                    id="localId"
-                    name="localId"
-                    autoComplete="localId"
-                    aria-label="localId"
-                    onChange={(e) => setLocalId(Number(e.target.value))}
-                    className="col-start-1 row-start-1 w-full appearance-none rounded-md py-2 pr-7 pl-3.5 text-base text-gray-500 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  >
-                    <option value="">Todos los locales</option>
-                    {locals.map((local) => (
-                    <option key={local.id} value={local.id}>
-                    {local.name}
-                    </option>
-                    ))}
-                  </select>
-                       
-          </div><div>
+              onChange={(e) => setLocalId(Number(e.target.value))}
+              className="mt-2 w-full rounded-md border px-3 py-2"
+            >
+              <option value="">Todos los locales</option>
+              {locals.map((local) => (
+                <option key={local.id} value={local.id}>
+                  {local.name}
+                </option>
+              ))}
+            </select>
           </div>
-          </div>
-
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Listado de platos</h2>
-
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        </div>
+        <h2 className="text-2xl font-bold mb-6 text-gray-800">
+            Listado de platos
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {dishes.map((dish) => (
-            <div key={dish.id} className="group relative">
+
+            <div
+              key={dish.id}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+            >
               <img
                 alt={dish.name}
-                src={"https://media.gettyimages.com/id/2022469376/es/vector/icono-de-plato-tenedor-y-cuchillo-con-trazo-editable.jpg?s=612x612&w=gi&k=20&c=9POvkSyh0igPo3M5GX5iz6_D0OPAPxe4zotLZWr_P-A="} //IA
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+                src={"https://media.gettyimages.com/id/2022469376/es/vector/icono-de-plato-tenedor-y-cuchillo-con-trazo-editable.jpg?s=612x612&w=gi&k=20&c=9POvkSyh0igPo3M5GX5iz6_D0OPAPxe4zotLZWr_P-A="}
+                className="h-56 w-full object-cover"
               />
-              <div className="mt-4 flex justify-between">
+              <div className="p-4 flex justify-between items-center">
                 <div>
-                  <h3 className="text-sm text-gray-700">
+                  <h3 className="text-lg font-semibold text-gray-800">
                     <Link href={`/DetallePlato/${dish.id}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
                       {dish.name}
                     </Link>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{dish.city}</p>
+                  <p className="text-sm text-gray-500">
+                    {dish.city}
+                  </p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">${dish.price}</p>
+                <span className="text-sm bg-indigo-100 text-indigo-700 px-2 py-1 rounded">
+                  ${dish.price}
+                </span>
               </div>
             </div>
           ))}

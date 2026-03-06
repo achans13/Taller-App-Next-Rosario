@@ -33,75 +33,92 @@ export default function PerfilComponent () {
     }, [])
 
     return (
-<div className="bg-white py-24 sm:py-32">
-   <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
-     <ul role="list" className="">
-       <li>
-         <div className="flex items-center ">
-           <img
-             alt="Foto perfil"
-             src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg"
-             className="size-16 rounded-full outline-1 outline-offset-1 outline-black/5 "
-           />
-           <div>
-             <h3 className="text-base/7 font-semibold mx-6 tracking-tight text-gray-900">{user.name}</h3>
-             <p className="text-sm/6 font-semibold mx-6 text-indigo-600">{user.username}</p>
-           </div>
-         </div>
-       </li>
-     </ul>
-            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"> 
-    <h2 className="text-2xl font-bold tracking-tight text-gray-900">Listado de {user.name}</h2>
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+<div className="bg-gray-100 min-h-screen py-16 px-6">
+    <div className="max-w-7xl mx-auto">
+      <div className="bg-white rounded-xl shadow-md p-6 flex items-center gap-6 mb-12">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg"
+          className="w-20 h-20 rounded-full border"
+        />
+        <div>
+          <h1 className="text-2xl font-bold text-gray-800">
+            {user.name}
+          </h1>
+          <p className="text-gray-500">
+            @{user.username}
+          </p>
+        </div>
+      </div>
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+          Locales de {user.name}
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {locals.map((local) => (
-            <div key={local.id} className="group relative">
+            <div
+              key={local.id}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
+            >
               <img
-                alt={local.name}
-                src={local.photos?.[0] || "https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2022/01/restaurantes-lomas-chapultepec-aitana.jpg?fit=1280%2C1280&ssl=1"} //IA
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+                src={
+                  local.photos?.[0] ||
+                  "https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2022/01/restaurantes-lomas-chapultepec-aitana.jpg"
+                }
+                className="h-48 w-full object-cover"
               />
-              <div className="mt-4 flex justify-between">
+              <div className="p-4 flex justify-between items-center">
                 <div>
-                  <h3 className="text-sm text-gray-700">
+                  <h3 className="text-lg font-semibold text-gray-800">
                     <Link href={`/DetalleLocal/${local.id}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
                       {local.name}
                     </Link>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{local.city}</p>
+                  <p className="text-sm text-gray-500">
+                    {local.city}
+                  </p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">{local.priceRange}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {dishes.map((dish) => (
-            <div key={dish.id} className="group relative">
-              <img
-                alt={dish.name}
-                src={"https://media.gettyimages.com/id/2022469376/es/vector/icono-de-plato-tenedor-y-cuchillo-con-trazo-editable.jpg?s=612x612&w=gi&k=20&c=9POvkSyh0igPo3M5GX5iz6_D0OPAPxe4zotLZWr_P-A="} //IA
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
-              />
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <Link href={`/DetallePlato/${dish.id}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {dish.name}
-                    </Link>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{dish.city}</p>
-                </div>
-                <p className="text-sm font-medium text-gray-900">${dish.price}</p>
+                <span className="text-sm bg-indigo-100 text-indigo-700 px-2 py-1 rounded">
+                  {local.priceRange}
+                </span>
               </div>
             </div>
           ))}
         </div>
       </div>
-   </div>
- </div> 
- 
+      <div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+          Platos de {user.name}
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {dishes.map((dish) => (
+            <div
+              key={dish.id}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
+            >
+              <img
+                src="https://media.gettyimages.com/id/2022469376/es/vector/icono-de-plato-tenedor-y-cuchillo-con-trazo-editable.jpg?s=612x612&w=gi&k=20&c=9POvkSyh0igPo3M5GX5iz6_D0OPAPxe4zotLZWr_P-A="
+                className="h-48 w-full object-cover"
+              />
+              <div className="p-4 flex justify-between items-center">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    <Link href={`/DetallePlato/${dish.id}`}>
+                      {dish.name}
+                    </Link>
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {dish.city}
+                  </p>
+                </div>
+                <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">
+                  ${dish.price}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
     )
 }
