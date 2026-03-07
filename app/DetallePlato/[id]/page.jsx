@@ -2,7 +2,7 @@
 import DetallePlatoComponent from "../../../components/DetallePlatoComponent";
 import Header from "../../../components/Header";
 import RestaurantRating from "../../../components/RestaurantRating";
-
+import Footer from "../../components/Footer";
 const DetallePlato = () => {
 
 
@@ -10,6 +10,7 @@ const DetallePlato = () => {
         <>
         <Header/>
         <DetallePlatoComponent/>
+        <Footer/>
         </>
         
     );

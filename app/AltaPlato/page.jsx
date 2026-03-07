@@ -1,7 +1,7 @@
 'use client';
 import AltaPlatoComponent from "../../components/AltaPlatosComponent";
 import Header from "../../components/Header";
-
+import Footer from "../../components/Footer";
 const AltaPlato = () => {
 
 
@@ -9,7 +9,7 @@ const AltaPlato = () => {
         <>
         <Header/>
         <AltaPlatoComponent/>
-
+        <Footer/>
         </>
         
     );

@@ -1,7 +1,7 @@
 'use client';
 import PerfilComponent from "../../../components/PerfilComponent";
 import Header from "../../../components/Header";
-
+import Footer from "../../../components/Footer";
 const Perfil = () => {
 
 
@@ -9,6 +9,7 @@ const Perfil = () => {
         <>
         <Header/>
         <PerfilComponent/>
+        <Footer/>
         </>
         
     );
